@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dayflare — Joelle's daily pulse</title>
+  <meta name="description" content="Dayflare: a vibrant personal daily planner for Joelle — tasks, workouts, wellness nudges, and reminders." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#planner">Skip to planner</a>
+
+  <header class="hero" id="top">
+    <div class="hero__atmosphere" aria-hidden="true"></div>
+    <nav class="topnav" aria-label="Primary">
+      <span class="topnav__mark">Dayflare</span>
+      <div class="topnav__actions">
+        <button type="button" class="btn btn--ghost" id="btn-notify" aria-pressed="false">Enable alerts</button>
+        <button type="button" class="btn btn--ghost" id="btn-reset" title="Reset to sample day">Reset day</button>
+      </div>
+    </nav>
+
+    <div class="hero__content">
+      <p class="brand" aria-label="Brand">Dayflare</p>
+      <h1 class="hero__headline">Your day, lit from the inside out.</h1>
+      <p class="hero__lede">Plan mornings, afternoons, and evenings — with workouts, wellness nudges, and reminders that actually show up.</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="#planner">Open today’s plan</a>
+        <a class="btn btn--secondary" href="#wellness">See wellness tokens</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="status-bar" aria-label="Day progress">
+      <div class="status-bar__inner">
+        <div class="progress-ring-wrap" aria-hidden="true">
+          <svg class="progress-ring" viewBox="0 0 120 120" width="88" height="88">
+            <circle class="progress-ring__track" cx="60" cy="60" r="52" />
+            <circle class="progress-ring__value" id="progress-ring" cx="60" cy="60" r="52" />
+          </svg>
+          <span class="progress-ring__label" id="progress-pct">0%</span>
+        </div>
+        <div class="status-meta">
+          <p class="status-meta__date" id="today-label"></p>
+          <p class="status-meta__line">
+            <span id="done-count">0</span> of <span id="total-count">0</span> done ·
+            <span class="token-pill" id="streak-display">0 day streak</span> ·
+            <span class="token-pill token-pill--gold" id="token-display">0 tokens</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="planner" id="planner">
+      <div class="section-head">
+        <h2>Day blocks</h2>
+        <p>Add plans, check them off, set a reminder per block.</p>
+      </div>
+      <div class="day-grid" id="day-sections"></div>
+    </section>
+
+    <section class="workout" id="workout" aria-labelledby="workout-title">
+      <div class="section-head">
+        <h2 id="workout-title">Workout flare</h2>
+        <p>Exercises with sets, reps, and notes — check them off as you go.</p>
+      </div>
+      <div class="panel" id="workout-panel">
+        <ul class="task-list" id="workout-list" role="list"></ul>
+        <form class="inline-form" id="workout-form" autocomplete="off">
+          <label class="sr-only" for="workout-name">Exercise</label>
+          <input id="workout-name" name="name" type="text" placeholder="Exercise name" required />
+          <label class="sr-only" for="workout-sets">Sets</label>
+          <input id="workout-sets" name="sets" type="text" placeholder="Sets" inputmode="numeric" />
+          <label class="sr-only" for="workout-reps">Reps</label>
+          <input id="workout-reps" name="reps" type="text" placeholder="Reps" />
+          <label class="sr-only" for="workout-notes">Notes</label>
+          <input id="workout-notes" name="notes" type="text" placeholder="Notes" />
+          <button type="submit" class="btn btn--primary btn--sm">Add</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="wellness" id="wellness" aria-labelledby="wellness-title">
+      <div class="section-head">
+        <h2 id="wellness-title">Wellness tokens</h2>
+        <p>Water, food cues, and health nudges — tap to check off or edit the schedule.</p>
+      </div>
+      <div class="token-board" id="wellness-board"></div>
+      <form class="inline-form wellness-form" id="wellness-form" autocomplete="off">
+        <label class="sr-only" for="wellness-label">Nudge label</label>
+        <input id="wellness-label" name="label" type="text" placeholder="New nudge (e.g. Stretch break)" required />
+        <label class="sr-only" for="wellness-time">Time</label>
+        <input id="wellness-time" name="time" type="time" required />
+        <label class="sr-only" for="wellness-kind">Category</label>
+        <select id="wellness-kind" name="kind" aria-label="Category">
+          <option value="water">Water</option>
+          <option value="food">Food</option>
+          <option value="focus">Focus</option>
+          <option value="move">Move</option>
+          <option value="care">Care</option>
+        </select>
+        <button type="submit" class="btn btn--primary btn--sm">Add nudge</button>
+      </form>
+    </section>
+
+    <section class="notes" id="notes" aria-labelledby="notes-title">
+      <div class="section-head">
+        <h2 id="notes-title">Day notes</h2>
+        <p>Brain dump, wins, or tomorrow’s spark — saved automatically.</p>
+      </div>
+      <label class="sr-only" for="day-notes">Notes for today</label>
+      <textarea id="day-notes" class="notes-area" rows="5" placeholder="What’s on your mind today…"></textarea>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>Dayflare</strong> · made for Joelle · data stays in your browser</p>
+  </footer>
+
+  <div id="toast-root" class="toast-root" aria-live="polite" aria-relevant="additions"></div>
+  <div id="confetti-root" class="confetti-root" aria-hidden="true"></div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
