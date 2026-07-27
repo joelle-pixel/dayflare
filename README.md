@@ -4,9 +4,7 @@ Joelle’s daily pulse — a personal planner for tasks, workouts, wellness nudg
 
 ## Live site
 
-**https://joelle-pixel.github.io/dayflare/**
-
-Mirror (joelle-y10): repo is `dayflareJoelle` for now — Pages not enabled yet. Target URL once set up: https://joelle-y10.github.io/dayflare/
+**https://joelle-y10.github.io/dayflare/**
 
 ## Run locally
 
