@@ -17,3 +17,8 @@ python3 -m http.server 8000
 ```
 
 Then visit the address the server prints (often http://localhost:8000).
+
+## Sister projects
+
+- **VolleyVibe** — https://joelle-y10.github.io/volleyvibe/ ([repo](https://github.com/joelle-y10/volleyvibe))
+- **STOCKED** — https://joelle-y10.github.io/stocked-app/ ([repo](https://github.com/joelle-y10/stocked-app))
